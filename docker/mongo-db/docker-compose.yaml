@@ -4,33 +4,51 @@ services:
   mongo1:
     container_name: mongo1
     image: mongo
+    restart: always
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
-      - ~/data/db1:/data/db
+      - ~/mongors/data1:/data/db
     networks:
       - mongors-network
+    expose: 
+      - 27017
     ports:
       - 27017:27017
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip", "localhost,mongo1", "--replSet", "myReplicaSet" ]
+    entrypoint: [ "/usr/bin/mongod", "--password", "root", "--username", "root", "--bind_ip", "localhost,mongo1", "--replSet", "myReplicaSet" ]
   mongo2:
     container_name: mongo2
     image: mongo
+    restart: always
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+    expose: 
+      - 27018
     volumes:
-      - ~/data/db2:/data/db
+      - ~/mongors/data2:/data/db
     networks:
       - mongors-network
     ports:
       - 27018:27017
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip", "localhost,mongo2",  "--replSet", "myReplicaSet" ]
+    entrypoint: [ "/usr/bin/mongod", "--password", "root", "--username", "root", "--bind_ip", "localhost,mongo2", "--replSet", "myReplicaSet" ]
   mongo3:
     container_name: mongo3
     image: mongo
+    restart: always
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+    expose: 
+      - 27019
     volumes:
-      - ~/data/db3:/data/db
+      - ~/mongors/data3:/data/db
     networks:
       - mongors-network
     ports:
       - 27019:27017
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip", "localhost,mongo3", "--replSet", "myReplicaSet" ]
+    entrypoint: [ "/usr/bin/mongod", "--password", "root", "--username", "root", "--bind_ip", "localhost,mongo3", "--replSet", "myReplicaSet" ]
   mongoinit:
     image: mongo
     restart: "no"

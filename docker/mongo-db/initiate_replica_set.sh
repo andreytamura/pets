@@ -3,7 +3,7 @@
 echo "Starting replica set initialization"
 until mongosh --host mongo1 --eval "print(\"waited for connection\")"
 do
-   sleep 2
+   sleep 7
 done
 echo "Connection finished"
 echo "Creating replica set"
@@ -15,7 +15,7 @@ MONGO3IP=$(getent hosts mongo3 | awk '{ print $1 }')
 read -r -d '' CMD <<EOF
 rs.initiate(
   {
-    _id : 'rs',
+    _id : 'myReplicaSet',
     members: [
       { _id : 0, host : '${MONGO1IP}:27017' },
       { _id : 1, host : '${MONGO2IP}:27017' },
