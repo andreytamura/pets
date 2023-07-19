@@ -34,12 +34,7 @@ public class MongoDBConfig {
     @Bean(name = "mongoClient")
     public MongoClient mongoClient(@Qualifier("propertiesMongoDB") MongoProperties mongoProperties) {
 
-        MongoCredential credential = MongoCredential.createCredential(mongoProperties.getUsername(), mongoProperties.getAuthenticationDatabase(), mongoProperties.getPassword());
-
-        return MongoClients.create(MongoClientSettings.builder()
-                .applyToClusterSettings(builder -> builder.hosts(singletonList(new ServerAddress(mongoProperties.getHost(), mongoProperties.getPort()))))
-                .credential(credential)
-                .build());
+        return MongoClients.create(mongoProperties.getUri());
     }
 
     @Primary

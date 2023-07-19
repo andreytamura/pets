@@ -22,7 +22,7 @@ public class TutorController {
     @GetMapping("/tutores")
     public ResponseEntity<Object> get() {
         try {
-            List<TutorDTO> result = tutorService.get();
+            List<TutorDTO> result = tutorService.getAllTutores();
             return ResponseHandler.generateResponse("Dados recuperados com sucesso!", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);

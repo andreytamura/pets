@@ -1,18 +1,25 @@
 package br.com.software.pets.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import org.bson.types.ObjectId;
+import lombok.*;
+
+import java.util.Date;
 
 @Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class TutorDTO {
 
-    private ObjectId id;
+    private String id;
 
     private String name;
 
     private String cpf;
 
     private String telephone;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 }
