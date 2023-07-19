@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TutorRepository {
     List<Tutor> getAllTutores();
+
+    Tutor addTutor(Tutor tutor);
+
+    Tutor getByCpf(String cpf);
 }

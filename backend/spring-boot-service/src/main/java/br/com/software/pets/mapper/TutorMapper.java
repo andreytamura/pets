@@ -12,4 +12,5 @@ public interface TutorMapper {
     TutorMapper INSTANCE = Mappers.getMapper(TutorMapper.class);
     TutorDTO tutorToTutorDTO(Tutor tutor);
     List<TutorDTO> tutoresToTutoresDTO(List<Tutor> tutor);
+    Tutor tutorDTOToTutor(TutorDTO tutorDTO);
 }

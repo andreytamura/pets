@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface TutorService {
     List<TutorDTO> getAllTutores();
+
+    TutorDTO addTutor(TutorDTO tutorNewDTO);
+
+    TutorDTO getByCpf(String cpf);
 }

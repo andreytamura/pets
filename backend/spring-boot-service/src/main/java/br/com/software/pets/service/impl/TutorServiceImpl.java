@@ -1,6 +1,5 @@
 package br.com.software.pets.service.impl;
 
-import br.com.software.pets.bd.mongo.model.Tutor;
 import br.com.software.pets.bd.mongo.repository.TutorRepository;
 import br.com.software.pets.dto.TutorDTO;
 import br.com.software.pets.mapper.TutorMapper;
@@ -22,9 +21,17 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public List<TutorDTO> getAllTutores() {
-        List<Tutor> response = tutorRepository.getAllTutores();
-        List<TutorDTO> transformers = tutorMapper.tutoresToTutoresDTO(response);
-        return transformers;
+        return tutorMapper.tutoresToTutoresDTO(tutorRepository.getAllTutores());
+    }
+
+    @Override
+    public TutorDTO addTutor(TutorDTO tutorNewDTO) {
+        return tutorMapper.tutorToTutorDTO(tutorRepository.addTutor(tutorMapper.tutorDTOToTutor(tutorNewDTO)));
+    }
+
+    @Override
+    public TutorDTO getByCpf(String cpf) {
+        return tutorMapper.tutorToTutorDTO(tutorRepository.getByCpf(cpf));
     }
 
 }

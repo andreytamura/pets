@@ -1,4 +1,4 @@
-package br.com.software.pets.controller;
+package br.com.software.pets.web.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,5 @@
 package br.com.software.pets.config;
 
-import com.mongodb.MongoClientSettings;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,8 +13,6 @@ import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-
-import static java.util.Collections.singletonList;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "br.com.software.pets.bd.mongo.repository")
@@ -33,7 +28,6 @@ public class MongoDBConfig {
 
     @Bean(name = "mongoClient")
     public MongoClient mongoClient(@Qualifier("propertiesMongoDB") MongoProperties mongoProperties) {
-
         return MongoClients.create(mongoProperties.getUri());
     }
 
