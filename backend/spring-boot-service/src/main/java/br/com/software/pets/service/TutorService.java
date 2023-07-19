@@ -10,4 +10,8 @@ public interface TutorService {
     TutorDTO addTutor(TutorDTO tutorNewDTO);
 
     TutorDTO getByCpf(String cpf);
+
+    TutorDTO updateTutor(TutorDTO tutorNewDTO);
+
+    TutorDTO deleteTutor(TutorDTO tutorNewDTO);
 }

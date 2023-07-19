@@ -1,14 +1,14 @@
 package br.com.software.pets.bd.mongo.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
+@SuperBuilder
 public abstract class BaseModel {
 
     @MongoId(FieldType.OBJECT_ID)
@@ -17,4 +17,12 @@ public abstract class BaseModel {
     protected Date createdAt;
 
     protected Date updatedAt;
+
+    public BaseModel(String id, Date createdAt, Date updatedAt){
+        this.id = id;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public BaseModel(){}
 }

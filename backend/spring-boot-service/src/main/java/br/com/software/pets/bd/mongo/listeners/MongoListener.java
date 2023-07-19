@@ -12,8 +12,11 @@ public class MongoListener extends AbstractMongoEventListener<BaseModel> {
     @Override
     public void onBeforeConvert(BeforeConvertEvent<BaseModel> event) {
         super.onBeforeConvert(event);
-        Date dateNow = new Date();
-        event.getSource().setCreatedAt(dateNow);
-        event.getSource().setUpdatedAt(dateNow);
+
+        if (event.getSource().getId() == null || event.getSource().getId().isEmpty())
+            event.getSource().setCreatedAt(new Date());
+
+        if (event.getSource().getId() != null && !event.getSource().getId().isEmpty())
+            event.getSource().setUpdatedAt(new Date());
     }
 }
